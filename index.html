@@ -1,0 +1,810 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <title>KTÜ WEB PROG SINAVI</title>
+</head>
+
+
+
+<body>
+    <script>
+        let alfabe = "abcdefghijklmnopqrstuvwxyz";
+        let alfabeDizi = [];
+
+        for (let i = 0; i < alfabe.length; i++) {
+            alfabeDizi.push(alfabe[i]);
+        }
+
+        //***************************--------************--------**************************
+        // Bu kısım local storage ilk veri kaydı için koyulmustur.  
+
+        /*   jsonContent = [{
+                "questionType": true,
+                "questionNo": 1,
+                "questionContent": "HTML'de, hangi etiketin içinde sayfa metni yer alır?",
+                "answers": [{
+                    "A": "meta",
+                    "B": "body",
+                    "C": "head",
+                    "D": "title",
+                    "E": "html"
+                }],
+                "correctAnswer": "body",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 2,
+                "questionContent": "HTML'de, boş bir paragraf için hangi etiketi kullanabilirsiniz?",
+                "answers": [{
+                    "A": "p/p",
+                    "B": "br",
+                    "C": "hr",
+                    "D": "empty",
+                    "E": "space"
+                }],
+                "correctAnswer": "p/p",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 3,
+                "questionContent": "HTML'de, bağlantı vermek için hangi etiketi kullanabilirsiniz?",
+                "answers": [{
+                    "A": "link",
+                    "B": "a",
+                    "C": "href",
+                    "D": "url",
+                    "E": "b"
+                }],
+                "correctAnswer": "a",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 4,
+                "questionContent": "HTML'de, resim eklemek için hangi etiketi kullanabilirsiniz?",
+                "answers": [{
+                    "A": "img",
+                    "B": "picture",
+                    "C": "figure",
+                    "D": "graphic",
+                    "E": "image"
+                }],
+                "correctAnswer": "img",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 5,
+                "questionContent": "HTML'de, bir numaralı liste oluşturmak için hangi etiketi kullanabilirsiniz?",
+                "answers": [{
+                    "A": "ol",
+                    "B": "ul",
+                    "C": "li",
+                    "D": "dl",
+                    "E": "dt"
+                }],
+                "correctAnswer": "ol",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 6,
+                "questionContent": "HTML'de, bir sırasız liste oluşturmak için hangi etiketi kullanabilirsiniz?",
+                "answers": [{
+                    "A": "ol",
+                    "B": "ul",
+                    "C": "li",
+                    "D": "dl",
+                    "E": "dt"
+                }],
+                "correctAnswer": "ol",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 7,
+                "questionContent": "JavaScript'te, hangi döngü yapısı belirli bir koşulu sağlayana kadar kodu yineler?",
+                "answers": [{
+                    "A": "for",
+                    "B": "while",
+                    "C": "do-while",
+                    "D": "forEach",
+                    "E": "map"
+                }],
+                "correctAnswer": "while",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 8,
+                "questionContent": "CSS'te, hangi özellik bir elementin kenarlık rengini belirler?",
+                "answers": [{
+                    "A": "color",
+                    "B": "border-color",
+                    "C": "background-color",
+                    "D": "font-size",
+                    "E": "width"
+                }],
+                "correctAnswer": "border-color",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 9,
+                "questionContent": "Java'da, hangi sözcük anahtar kelime (keyword) değildir?",
+                "answers": [{
+                    "A": "int",
+                    "B": "double",
+                    "C": "String",
+                    "D": "static",
+                    "E": "public"
+                }],
+                "correctAnswer": "String",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 10,
+                "questionContent": "Python'da, hangi döngü yapısı bir listedeki tüm elemanları yineler?",
+                "answers": [{
+                    "A": "for",
+                    "B": "while",
+                    "C": "do-while",
+                    "D": "forEach",
+                    "E": "map"
+                }],
+                "correctAnswer": "for",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }, {
+                "questionType": true,
+                "questionNo": 11,
+                "questionContent": "C++'da, hangi operatör değişkenin değerini arttırır?",
+                "answers": [{
+                    "A": "++",
+                    "B": "--",
+                    "C": "+=",
+                    "D": "-=",
+                    "E": "="
+                }],
+                "correctAnswer": "++",
+                "userAnswer": "",
+                "questionImg": "",
+                "questionTime": 90,
+                "questionPoint": 10
+            }
+
+        ]
+
+        localStorage.setItem("jsonContent", JSON.stringify(jsonContent));
+*/
+
+
+        //***************************--------************--------**************************
+
+
+        jsonContent = JSON.parse(localStorage.getItem("jsonContent"));
+
+        function selectQuestionButton() {
+            for (let i = 0; i < jsonContent.length; i++) {
+
+                if (jsonContent[i]["userAnswer"] != "") {
+
+                    document.getElementById(i + 1).style.backgroundColor = selectedButtonColor;
+
+                } else {
+                    document.getElementById(i + 1).style.backgroundColor = "";
+
+                }
+
+            }
+        }
+    </script>
+    <script>
+        var addSoruId = 0;
+        var soruType = true; //ÇS ise
+
+        var DCount = 0;
+
+        function addAnswerButton() {
+            document.getElementById("SDQuestionAnswer").innerHTML += "<input id='Answer" + (addSoruId++) + "' placeholder='Cevap Şıkları' /> <br>"
+        }
+
+        function addQuestionButton() {
+            var tmpjs = {};
+            for (let i = 0; i < addSoruId; i++) {
+                tmpjs = Object.assign(tmpjs, {
+                    [alfabeDizi[i]]: document.getElementById("Answer" + i).value
+                })
+
+            }
+            console.log(tmpjs);
+            jsonContent = Object.assign(jsonContent,
+
+                {
+                    [DCount - 1]: {
+                        "questionType": soruType,
+                        "questionNo": DCount,
+                        "questionContent": document.getElementById("SDQuestionContent").value,
+                        "answers": [tmpjs],
+                        "correctAnswer": document.getElementById("SDQuestionCorrectAnswer").value,
+                        "questionImg": "",
+                        "questionTime": 1,
+                        "questionPoint": 10
+                    }
+
+                }
+
+            )
+
+            document.getElementById("questionSelector").innerHTML +=
+                "<button id='" + DCount + "'  onclick='soruDuzenleGec(" + DCount + ")'  >" + DCount + "</button>";
+
+            localStorage.setItem("jsonContent", JSON.stringify(jsonContent));
+            newQuestion();
+
+        }
+
+        function saveQuestionButton() {
+
+            jsonContent[DCount - 1]["questionType"] = soruType;
+            jsonContent[DCount - 1]["questionNo"] = document.getElementById("SDQuestionNo").value;
+            jsonContent[DCount - 1]["questionContent"] = document.getElementById("SDQuestionContent").value;
+
+
+            jsonContent[DCount - 1]["questionImg"] //********
+
+
+            var tmpjs = {};
+            for (let i = 0; i < addSoruId; i++) {
+                tmpjs = Object.assign(tmpjs, {
+                    [alfabeDizi[i]]: document.getElementById("Answer" + i).value
+                })
+
+            }
+            jsonContent[DCount - 1]["answers"][0] = tmpjs;
+
+
+
+            jsonContent[DCount - 1]["correctAnswer"] = document.getElementById("SDQuestionCorrectAnswer").value;
+            localStorage.setItem("jsonContent", JSON.stringify(jsonContent));
+
+        }
+
+        function CsSorular() {
+            document.getElementById("SDQuestionAnswer").style.visibility = "visible";
+            document.getElementById("addButton").style.visibility = "visible";
+            document.getElementById("CsSorular").style.backgroundColor = "#dc6239";
+            document.getElementById("KSorular").style.backgroundColor = "white";
+            document.getElementById("SDQuestionAnswer").style.width = null;
+            document.getElementById("SDQuestionAnswer").style.height = null;
+            soruType = true;
+
+        }
+
+        function KSorular() {
+            document.getElementById("SDQuestionAnswer").style.width = 0;
+            document.getElementById("SDQuestionAnswer").style.height = 0;
+            document.getElementById("KSorular").style.backgroundColor = "#dc6239";
+            document.getElementById("CsSorular").style.backgroundColor = "white";
+            document.getElementById("SDQuestionAnswer").style.visibility = "hidden";
+            document.getElementById("addButton").style.visibility = "hidden";
+            soruType = false;
+        }
+
+        function soruDuzenleGec(i) {
+            DCount = i - 1;
+            document.getElementById("saveQuestionButton").setAttribute("onclick", "saveQuestionButton()");
+            examEditQuestion();
+
+
+        }
+
+        function examEdit() {
+
+            document.getElementById("SDQuestionNo").disabled = true;
+            document.getElementById("next").style.visibility = "hidden";
+            document.getElementById("next").style.width = 0;
+            document.getElementById("next").style.height = 0;
+            document.getElementById("ExamStart").style.visibility = "hidden";
+            document.getElementById("ExamStart").style.width = 0;
+            document.getElementById("ExamStart").style.height = 0;
+            document.getElementById("examSet").disabled = true;
+            document.getElementById("examEditDiv").style.width = 100;
+            document.getElementById("examEditDiv").style.height = 100;
+            document.getElementById("mainMenu").style.height = 0;
+            document.getElementById("mainMenu").style.width = 0;
+            document.getElementById("timeField").innerHTML = "<h2>SORU DUZENLEME</h2>";
+            document.getElementById("examEditDiv").style.visibility = "visible";
+
+
+            for (let i = 1; i <= jsonContent.length; i++) {
+
+                document.getElementById("questionSelector").innerHTML +=
+                    "<button id='" + i + "'  onclick='soruDuzenleGec(" + i + ")'  >" + i + "</button>";
+
+            }
+
+            examEditQuestion();
+
+            document.getElementById("altMenu").style.visibility = "visible";
+
+
+        }
+
+        function examEditQuestion() {
+
+            document.getElementById("SDQuestionNo").value = jsonContent[DCount]["questionNo"];
+            document.getElementById("SDQuestionContent").value = jsonContent[DCount]["questionContent"];
+            var temp = jsonContent[DCount]["answers"][0];
+            document.getElementById("SDQuestionAnswer").innerHTML = "";
+            addSoruId = 0;
+            document.getElementById("SDQuestionImg").innerHTML = "";
+
+            if (jsonContent[DCount]["questionImg"] != "") {
+                document.getElementById("SDQuestionImg").innerHTML = " <img src='" + jsonContent[DCount]["questionImg"] + "' width='250' height='250'>";
+            }
+
+            if (jsonContent[DCount]["questionType"]) {
+                CsSorular();
+                for (x in temp) {
+                    console.log(temp[x]);
+                    document.getElementById("SDQuestionAnswer").innerHTML += "<input id='Answer" + (addSoruId++) + "' placeholder='Cevap Şıkları' value='" +
+                        temp[x] + "' /> <br>"
+
+                }
+            } else {
+                KSorular();
+                document.getElementById("questionAnswer").innerHTML = "<input id='KS" + DCount + "' type='text'  placeHolder='Cevabınız..' style='width:100%; '  />";
+                document.getElementById("addButton").style.visibility = "hidden";
+            }
+            document.getElementById("SDQuestionCorrectAnswer").value = (jsonContent[DCount]["correctAnswer"]);
+
+            DCount++;
+
+        }
+
+        function newQuestion() {
+            addSoruId = 1;
+            document.getElementById("saveQuestionButton").setAttribute("onclick", "addQuestionButton()");
+            DCount = jsonContent.length + 1;
+            document.getElementById("SDQuestionNo").value = DCount;
+            document.getElementById("SDQuestionContent").value = "";
+            document.getElementById("SDQuestionAnswer").innerHTML = "<input id='Answer0' placeholder='Cevap Şıkları' /> <br>";
+            document.getElementById("SDQuestionCorrectAnswer").value = "";
+            document.getElementById("timeField").innerHTML = "<h2>Soru Ekle</h2>";
+
+        }
+    </script>
+    <div class="container-fluid " style="padding-bottom: 70px;">
+
+        <div class="row " style="background-color: #efb977;padding-top: 50px;">
+            <h1>
+                <center>Karadeniz Teknik Üniversitesi Web Programlama Ara Sınavı</center>
+            </h1>
+        </div>
+
+        <div class="row" style="margin: 18px;visibility: visible;">
+            <h2>
+                <center id="ExamStart"><button id="examStart" onclick="examStart(false)" style="background-color: #dc6239;">SINAVA
+                        BAŞLA</button></center>
+                <center style="padding-top: 5px;" id="ExamSet"><button id="examSet" onclick="examEdit()" style="background-color: #dc6239;">SINAVI
+                        DÜZENLE</button></center>
+            </h2>
+        </div>
+
+        <div id="examEditDiv" class="row justify-content-center " style="visibility: hidden;">
+            <div id="SDSorular" class="col-8 border border-5" style="padding: 32px;border-color: #efb977 !important;background-color:#FFE6C7;">
+                <input id="SDQuestionNo" placeholder="Soru No" />
+
+
+                <button id="CsSorular" onclick="CsSorular()" style="float: right;background-color: #dc6239;"> Çoktan
+                    Seçmeli</button>
+                <button id="KSorular" onclick="KSorular()" style="float: right;"> Klasik</button>
+
+                <div class="row ">
+                    <div class="col">
+                        <input id="SDQuestionContent" style="font-size: large; width: 100%;" placeholder="Soru Metni" />
+                        <hr>
+                        <div id="SDQuestionAnswer">
+
+                            <input id="Answer0" placeholder="Cevap Şıkları" /> <br>
+
+
+                        </div>
+                        <div class="row ">
+                            <input class="col-11" placeholder="Doğru Cevap" id="SDQuestionCorrectAnswer" />
+                            <button class="col-1" onclick="addAnswerButton()" style="width: 25px; height: 25px; " id="addButton">+</button>
+
+                        </div>
+
+                    </div>
+                    <div id="SDQuestionImg" class="col-auto">
+
+                    </div>
+                </div>
+
+                <button class="float-end" id="saveQuestionButton" onclick="saveQuestionButton()">Kaydet</button>
+            </div>
+        </div>
+
+        <div id="mainMenu" class="row justify-content-center " style="padding-top: 5px;visibility: hidden;">
+
+            <div id="sorular" class="col-8 border border-5" style="padding: 32px;border-color: #efb977 !important;background-color:#FFE6C7;">
+                <h5 id="questionNo"> </h5>
+                <div class="row">
+                    <div class="col">
+                        <p id="questionContent" style="font-size: large;"></p>
+                        <hr>
+                        <div id="questionAnswer"></div>
+                    </div>
+                    <div id="questionImg" class="col-auto">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--TİMER-->
+    <script>
+        var deger;
+
+        function questionTimeCounter(tmp) {
+            clearInterval(deger);
+            localStorage.setItem("time", tmp);
+            timer();
+
+        }
+
+        function startTime() {
+            var tmp = localStorage.getItem("time");
+            localStorage.setItem("time", --tmp);
+            if (tmp >= 0) {
+                printTime(tmp);
+            } else {
+                clearInterval(deger);
+
+                if (count == jsonContent.length) {
+                    bitir();
+                } else {
+                    current();
+                }
+
+            }
+
+        }
+
+        function timer() {
+            deger = setInterval("startTime()", 1000);
+        }
+
+        function printTime(time) {
+            var timeTxt = "";
+
+            var dakika = parseInt(time / 60);
+            var saniye = time % 60;
+
+            if (dakika < 10)
+                timeTxt += '0' + dakika;
+            else
+                timeTxt += dakika;
+
+            timeTxt += ":";
+
+            if (saniye < 10)
+                timeTxt += '0' + saniye;
+            else
+                timeTxt += saniye;
+
+            document.getElementById("timeText").innerText = timeTxt;
+        }
+    </script>
+
+    <!--SORULAR VE ANA MENÜ-->
+    <script>
+        let count = 0;
+        var puan = 0;
+        var onizleme = false;
+
+        function soruGec(i) {
+
+            count = i - 1;
+            current();
+            selectQuestionButton();
+
+        }
+
+        function examStart() {
+            document.getElementById("addQuestion").style.visibility = "hidden";
+            document.getElementById("addQuestion").style.width = 0;
+            document.getElementById("addQuestion").style.height = 0;
+            document.getElementById("examSet").style.visibility = "hidden";
+            document.getElementById("addQuestion").style.visibility = "hidden";
+            document.getElementById("ExamSet").style.width = 0;
+            document.getElementById("ExamSet").style.height = 0;
+            document.getElementById("mainMenu").style.width = 1000;
+            document.getElementById("mainMenu").style.height = 1000;
+            document.getElementById("examEditDiv").style.width = 0;
+            document.getElementById("examEditDiv").style.height = 0;
+            document.getElementById("questionSelector").innerHTML = "";
+
+            for (let i = 1; i <= jsonContent.length; i++) {
+
+                document.getElementById("questionSelector").innerHTML +=
+                    "<button id='" + i + "'  onclick='soruGec(" + i + ")'  >" + i + "</button>";
+
+            }
+
+            document.getElementById("mainMenu").style.visibility = "visible";
+            document.getElementById("altMenu").style.visibility = "visible";
+            document.getElementById("examStart").style.visibility = "hidden";
+            document.getElementById("questionNo").innerText = jsonContent[count]["questionNo"] + ".Soru";
+            document.getElementById("questionContent").innerText = jsonContent[count]["questionContent"];
+            var temp = jsonContent[count]["answers"][0];
+            document.getElementById("questionAnswer").innerHTML = "";
+            document.getElementById("questionImg").innerHTML = "";
+
+            if (jsonContent[count]["questionImg"] != "") {
+                document.getElementById("questionImg").innerHTML = " <img src='" + jsonContent[count]["questionImg"] + "' width='250' height='250'>";
+
+            }
+
+            if (jsonContent[count]["questionType"]) {
+                for (x in temp) {
+                    console.log(temp[x]);
+                    document.getElementById("questionAnswer").innerHTML += " <p> <input  " + (onizleme == true ? " disabled=true" : "") +
+                        (onizleme == true && cevaplar[count] == x ? " checked=true" : "") +
+                        " type='radio' name='answer' key='" + x + "' value='" + temp[x] + "' id='" + x + "' >" +
+                        "<label for='" + x + "'>" + temp[x] + "</label>" + "</p>";
+
+                }
+
+            } else {
+                document.getElementById("questionAnswer").innerHTML = "<input id='KSC" + count + "' type='text'  placeHolder='Cevabınız..' style='width:100%; '  />";
+
+            }
+
+            questionTimeCounter(3600);
+            count++;
+            document.getElementById(count).style.backgroundColor = currentButtonColor;
+
+        }
+
+        function current() {
+            selectQuestionButton();
+            if (count < jsonContent.length) {
+                if (onizleme == false) {
+
+                    if (count == 0) {
+                        if (jsonContent[count]["questionType"]) {
+
+                            var rates = document.getElementsByName('answer');
+                            for (var i = 0; i < rates.length; i++) {
+                                if (rates[i].checked) {
+                                    jsonContent[count]["userAnswer"] = rates[i].getAttribute("value");
+                                    //document.getElementById(count).style.backgroundColor = selectedButtonColor;
+                                }
+                            }
+                        } else {
+                            jsonContent[count]["userAnswer"] = document.getElementById("KSC" + (count)).value;
+
+                        }
+                    } else {
+                        if (jsonContent[count - 1]["questionType"]) {
+
+                            var rates = document.getElementsByName('answer');
+                            for (var i = 0; i < rates.length; i++) {
+                                if (rates[i].checked) {
+                                    jsonContent[count - 1]["userAnswer"] = rates[i].getAttribute("value");
+
+                                }
+                            }
+                        } else {
+                            jsonContent[count - 1]["userAnswer"] = document.getElementById("KSC" + (count - 1)).value;
+
+                        }
+                    }
+
+
+
+                }
+
+                document.getElementById("questionNo").innerText = jsonContent[count]["questionNo"] + ".Soru";
+                document.getElementById("questionContent").innerText = jsonContent[count]["questionContent"];
+                var temp = jsonContent[count]["answers"][0];
+                document.getElementById("questionAnswer").innerHTML = "";
+                document.getElementById("questionImg").innerHTML = "";
+
+                if (jsonContent[count]["questionImg"] != "") {
+                    document.getElementById("questionImg").innerHTML = " <img src='" + jsonContent[count]["questionImg"] + "' width='250' height='250'>";
+                }
+
+                if (jsonContent[count]["questionType"]) {
+                    for (x in temp) {
+                        console.log(temp[x]);
+                        document.getElementById("questionAnswer").innerHTML += " <p> <input " + (onizleme == true ? " disabled=true" : "") +
+                            (jsonContent[count]["userAnswer"] == temp[x] ? " checked=true" : "") +
+
+                            " type='radio' name='answer' key='" + x + "' value='" + temp[x] + "' id='" + x + "' >" +
+                            "<label  for='" + x + "'" +
+                            (onizleme == true && temp[x] == jsonContent[count]["correctAnswer"] ? "style=' font-weight:bold; color:green'" : (onizleme == true && jsonContent[count]["userAnswer"] == temp[x] ? "style='color:red'" : "")) + " >" + temp[x] + "</label>" + "</p>";
+
+                    }
+
+                } else {
+
+
+                    document.getElementById("questionAnswer").innerHTML = "<input id='KSC" + count + "' " +
+                        (onizleme == true ? " disabled=true " : "") + (jsonContent[count]["userAnswer"] == jsonContent[count]["correctAnswer"] ? " style=' width:100%; background-color:green'" :
+                            (onizleme == true ? "style='width:100%; background-color:red'" : "style='width:100%;'")) + "placeHolder='Cevabınız..'  value='" +
+                        (jsonContent[count]["userAnswer"] == undefined ? "" : jsonContent[count]["userAnswer"]) + "'/>";
+
+                }
+
+
+
+
+                count++;
+                document.getElementById(count).style.backgroundColor = currentButtonColor
+            }
+            if (count == jsonContent.length) {
+                if (onizleme == false) {
+                    document.getElementById("next").setAttribute("onclick", "bitir()");
+                    document.getElementById("next").innerText = "Sınavı Bitir";
+                } else {
+                    document.getElementById("next").setAttribute("onclick", "bitir()");
+                    document.getElementById("next").innerText = "Önizlemeyi bitir";
+                }
+
+            }
+
+        }
+
+        function bitir() {
+
+
+            if (onizleme == false) {
+                if (window.confirm('Sınav Bitirilsin mi?')) {
+                    clearInterval(deger);
+                    document.getElementById("timeText").innerText = "-- : --";
+                    puan = 0;
+                    for (let i = 0; i < jsonContent.length; i++) {
+                        if (jsonContent[i]["userAnswer"] == jsonContent[i]["correctAnswer"]) {
+                            puan += 100 / jsonContent.length;
+                        }
+                        localStorage.setItem("userContent", JSON.stringify(jsonContent));
+                    }
+
+
+
+                    window.alert("SINAVINIZ BİTMİŞTİR PUANINIZ: " + puan);
+                    if (window.confirm('Sınav Önizlensin mi?')) {
+                        count = 0;
+                        onizleme = true;
+
+                        current();
+                        var btn = document.getElementById("next");
+                        btn.setAttribute("onclick", "current()");
+                        btn.innerText = "Sonraki Soru Önizleme";
+
+                    } else {
+                        console.log("No Said");
+
+                        document.getElementById("mainMenu").style.visibility = "hidden";
+                        document.getElementById("altMenu").style.visibility = "hidden";
+                        document.getElementById("examStart").style.visibility = "visible";
+                        document.getElementById("examStart").setAttribute("disabled", "true");
+
+                    }
+                }
+            } else {
+                //önizleme bitir
+                document.getElementById("mainMenu").style.visibility = "hidden";
+                document.getElementById("altMenu").style.visibility = "hidden";
+                document.getElementById("examStart").style.visibility = "visible";
+                document.getElementById("examStart").setAttribute("disabled", "true");
+            }
+
+        }
+
+
+
+        var selectedButtonColor = "#dc6239";
+        var currentButtonColor = "#FFA559";
+    </script>
+
+    <!--ALT KISIM-->
+    <footer class="footter fixed-bottom ">
+        <div id="altMenu" class="  container-fluid" style="padding-top:40px;padding-bottom:40px;visibility: hidden;background-color:#efb977;">
+            <div class="row justify-content-center" style="padding-left:100px ;padding-right: 100px;">
+                <div id="timeField" class="col-3">
+                    <h1>Kalan Süre: <span id="timeText" style="padding-left: 5px;">00:00</span> </h1>
+                </div>
+                <div class="scrollmenu" style="max-width: 300px;">
+                    <div id="questionSelector"></div>
+                </div>
+                <div class="col-3 text-center">
+                    <div>
+                        <button id="next" name="bir" onclick="current()" style="padding-left:10px;font-size: 30px;background-color:#dc6239;">Sonraki soru</button>
+                        <button id="addQuestion" onclick="newQuestion()" style="font-size: 30px;background-color:#dc6239;"> Soru Ekle</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <style>
+        div.scrollmenu button {
+            display: inline-block;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+        }
+        
+        div.scrollmenu {
+            overflow: auto;
+            white-space: nowrap;
+        }
+        
+        div.scrollmenu button:hover {
+            background-color: #e6b7a6;
+        }
+        
+        #questionSelector button {
+            font-size: large;
+            margin-left: 5px;
+        }
+        
+        #questionAnswer input {
+            width: 20px;
+            height: 20px;
+        }
+        
+        #questionAnswer label {
+            font-size: 20px;
+            padding-left: 15px;
+        }
+    </style>
+
+</body>
+
+
+</html>
